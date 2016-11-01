@@ -1,0 +1,15 @@
+{
+  "name": "card-info-server-test",
+  "version": "1.0.0",
+  "description": "\n    \n    \n    \n  ",
+  "main": "card-info-server-test.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "dark-side": "marcus7777/dark-side#10cee98149",
+    "url-encode": "marcus7777/url-encode#988d8879d3",
+    "iron-ajax": "PolymerElements/iron-ajax#59d908fcd0"
+  }
+}

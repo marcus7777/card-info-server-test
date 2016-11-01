@@ -1,0 +1,31 @@
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+<link rel="import" href="../url-encode/url-encode.html">
+<link rel="import" href="../dark-side/dark-side.html">
+<!--
+  `<card-info-server-test></card-info-server-test>` #data back
+  @demo demo.html
+-->
+<dom-module id="card-info-server-test">
+  <template>
+    <template is="dom-repeat" items="{{sides}}">
+      <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
+      <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
+      <template is="dom-if" if="[[!item.data.cardIcon]]">
+        No image
+      </template>
+      <template is="dom-if" if="[[item.data.cardIcon]]">
+        <img src=[[item.data.cardIcon]] />
+      </template>
+      <h3>[[item.data.title]]</h3>
+      <h6>[[item.data.desc]]</h6>
+    </template>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "card-info-server-test",
+    properties:{
+      sides:Array,
+    },
+  })
+</script>
