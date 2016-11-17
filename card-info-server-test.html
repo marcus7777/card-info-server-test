@@ -11,16 +11,15 @@
       <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
       <template is="dom-if" if="[[item.out]]">
         <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
-      
         <template is="dom-if" if="[[!item.data.cardIcon]]">
-          No data
+          No img
         </template>
         <template is="dom-if" if="[[item.data.cardIcon]]">
           <img src=[[item.data.cardIcon]] /> 
-          <h3>[[item.data.title]]</h3>
-          <h6>[[item.data.desc]]</h6>
-          <h6>[[item.data.link]]</h6>
         </template>
+        <h3>[[item.data.title]]</h3>
+        <h6>[[item.data.desc]]</h6>
+        <h6>[[item.data.link]]</h6>
       </template>
     </template>
   </template>
