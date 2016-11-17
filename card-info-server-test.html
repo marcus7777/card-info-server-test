@@ -31,6 +31,7 @@
     },
     ready: function() {
       var that = this
+      that.sidesShowing = []
       var add = function() {
         if (that.sides.length > 1) {
           that.sidesShowing.unshift(that.sides.pop())
