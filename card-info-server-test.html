@@ -14,11 +14,11 @@
         No data
       </template>
       <template is="dom-if" if="[[item.data.cardIcon]]">
-        <img src=[[item.data.cardIcon]] />
+        <img src=[[item.data.cardIcon]] /> 
+        <h3>[[item.data.title]]</h3>
+        <h6>[[item.data.desc]]</h6>
+        <h6>[[item.data.link]]</h6>
       </template>
-      <h3>[[item.data.title]]</h3>
-      <h6>[[item.data.desc]]</h6>
-      <h6>[[item.data.link]]</h6>
     </template>
   </template>
 </dom-module>
@@ -27,6 +27,7 @@
     is: "card-info-server-test",
     properties:{
       sides:Array,
+      sidesShowing:Array,
     },
     ready: function() {
       var that = this
