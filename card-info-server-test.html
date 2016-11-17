@@ -7,11 +7,11 @@
 -->
 <dom-module id="card-info-server-test">
   <template>
-    <template is="dom-repeat" items="{{sides}}">
+    <template is="dom-repeat" items="{{sides}}" initial-Count="1" delay="1">
       <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
       <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
       <template is="dom-if" if="[[!item.data.cardIcon]]">
-        No image
+        No data
       </template>
       <template is="dom-if" if="[[item.data.cardIcon]]">
         <img src=[[item.data.cardIcon]] />
