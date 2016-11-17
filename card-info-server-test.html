@@ -7,20 +7,18 @@
 -->
 <dom-module id="card-info-server-test">
   <template>
-    <template is="dom-repeat" items="{{sidesShowing}}">
-      <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
-      <template is="dom-if" if="[[item.out]]">
-        <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
-        <template is="dom-if" if="[[!item.data.cardIcon]]">
-          No img
-        </template>
-        <template is="dom-if" if="[[item.data.cardIcon]]">
-          <img src=[[item.data.cardIcon]] /> 
-        </template>
-        <h3>[[item.data.title]]</h3>
-        <h6>[[item.data.desc]]</h6>
-        <h6>[[item.data.link]]</h6>
+    <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
+    <template is="dom-if" if="[[item.out]]">
+      <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
+      <template is="dom-if" if="[[!item.data.cardIcon]]">
+        No img
       </template>
+      <template is="dom-if" if="[[item.data.cardIcon]]">
+        <img src=[[item.data.cardIcon]] /> 
+      </template>
+      <h3>[[item.data.title]]</h3>
+      <h6>[[item.data.desc]]</h6>
+      <h6>[[item.data.link]]</h6>
     </template>
   </template>
 </dom-module>
@@ -29,15 +27,13 @@
     is: "card-info-server-test",
     properties:{
       sides:Array,
-      sidesShowing:Array,
     },
     ready: function() {
       var that = this
-      that.sidesShowing = []
       var add = function() {
         if (that.sides.length > 1) {
-          that.sidesShowing.unshift(that.sides.pop())
-          window.setTimeout(add, 2000)
+          that.item = that.sides.pop()
+          window.setTimeout(add, 500)
         }
       }
       add()
