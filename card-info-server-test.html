@@ -9,6 +9,7 @@
   <template>
     <url-encode input="[[item.url]]" out="{{item.out}}"></url-encode>
     <template is="dom-if" if="[[item.out]]">
+      <h2>loading ... [[item.out]]</h2>
       <iron-ajax auto url="https://info.open-elements.org/url/[[item.out]]" handle-as="json" last-response="{{item.data}}"></iron-ajax>
       <template is="dom-if" if="[[!item.data.cardIcon]]">
         No img
