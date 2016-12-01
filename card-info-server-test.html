@@ -17,6 +17,10 @@
       <template is="dom-if" if="[[item.data.cardIcon]]">
         <img src=[[item.data.cardIcon]] /> 
       </template>
+      
+      <template is="dom-if" if="[[item.data.image]]">
+        <img src=[[item.data.image]] /> 
+      </template>
       <h3>[[item.data.title]]</h3>
       <h6>[[item.data.desc]]</h6>
       <h6>[[item.data.link]]</h6>
